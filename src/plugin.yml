@@ -1,0 +1,4 @@
+name: Ships
+version: 0.1
+authors: [maltesermailo, Nightloewe]
+main: de.maltesermailo.ships.ShipsPlugin
