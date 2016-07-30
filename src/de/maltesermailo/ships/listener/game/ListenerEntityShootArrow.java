@@ -15,7 +15,9 @@ public class ListenerEntityShootArrow implements Listener {
 	@EventHandler
 	public void onShoot(EntityShootBowEvent event) {
 		if (event.getEntity() instanceof Player) {
-			if (event.getBow().getItemMeta().hasDisplayName() && event.getBow().getItemMeta().getDisplayName().equals("Explosions Bogen")) { // TODO equalize real item
+			if (event.getBow().getItemMeta().hasDisplayName() &&
+					event.getBow().getItemMeta().getDisplayName().
+					equals(ShipsPlugin.instance().getGame().getBowExplosion().getItemMeta().getDisplayName())) { // TODO equalize real item
 				event.setCancelled(true);
 				Player player = (Player) event.getEntity();
 				
@@ -32,8 +34,24 @@ public class ListenerEntityShootArrow implements Listener {
 					arrow.setBounce(false);
 					arrow.setMetadata("arrow.explosive", new FixedMetadataValue(ShipsPlugin.instance(), true));
 				} else {
-					player.sendMessage(ShipsPlugin.instance().getPrefix() + " Das Schiff wurde an dieser Stelle bereits zerstört!");
+					player.sendMessage(ShipsPlugin.instance().getPrefix() + " Dein Schiff ist zu stark beschädigt!");
 				}
+			} else if (event.getBow().getItemMeta().hasDisplayName() &&
+					event.getBow().getItemMeta().getDisplayName().
+					equals(ShipsPlugin.instance().getGame().getBowFire().getItemMeta().getDisplayName())) { // TODO equalize real item
+				event.setCancelled(true);
+				Player player = (Player) event.getEntity();
+				
+				Arrow arrow = player.launchProjectile(Arrow.class);
+				arrow.setBounce(false);
+				arrow.setMetadata("arrow.fire", new FixedMetadataValue(ShipsPlugin.instance(), true));
+			} else if(!event.getBow().getItemMeta().hasDisplayName()) {
+				event.setCancelled(true);
+				Player player = (Player) event.getEntity();
+				
+				Arrow arrow = player.launchProjectile(Arrow.class);
+				arrow.setBounce(false);
+				arrow.setMetadata("arrow.normal", new FixedMetadataValue(ShipsPlugin.instance(), true));
 			}
 		}
 	}

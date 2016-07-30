@@ -1,4 +1,11 @@
 name: Ships
 version: 0.1
 authors: [maltesermailo, Nightloewe]
+depend: [WorldGuard, WorldEdit]
 main: de.maltesermailo.ships.ShipsPlugin
+
+commands:
+   ships:
+     description: Ships main command
+   start:
+     description: Sets countdown to 5 seconds

@@ -11,11 +11,11 @@ public class GameConfiguration {
 	
 	private FileConfiguration cfg;
 	
-	private Location teamSpawn1;
-	private Location teamSpawn2;
+	private Location teamSpawnBlue;
+	private Location teamSpawnRed;
 	
-	private Location teamTreasure1;
-	private Location teamTreasure2;
+	private Location teamTreasureBlue;
+	private Location teamTreasureRed;
 	
 	private String ship1;
 	private String ship2;
@@ -27,36 +27,36 @@ public class GameConfiguration {
 	public GameConfiguration() {
 		this.cfg = ShipsPlugin.instance().getConfig();
 		
-		this.cfg.addDefault("locations.teamSpawn1.x", 0D);
-		this.cfg.addDefault("locations.teamSpawn1.y", 0D);
-		this.cfg.addDefault("locations.teamSpawn1.z", 0D);
-		this.cfg.addDefault("locations.teamSpawn1.yaw", 0F);
-		this.cfg.addDefault("locations.teamSpawn1.pitch", 0F);
-		this.cfg.addDefault("locations.teamSpawn1.world", "world");
+		this.cfg.addDefault("locations.teamSpawnBlue.x", 0D);
+		this.cfg.addDefault("locations.teamSpawnBlue.y", 0D);
+		this.cfg.addDefault("locations.teamSpawnBlue.z", 0D);
+		this.cfg.addDefault("locations.teamSpawnBlue.yaw", 0F);
+		this.cfg.addDefault("locations.teamSpawnBlue.pitch", 0F);
+		this.cfg.addDefault("locations.teamSpawnBlue.world", "world");
 		
-		this.cfg.addDefault("locations.teamSpawn2.x", 0D);
-		this.cfg.addDefault("locations.teamSpawn2.y", 0D);
-		this.cfg.addDefault("locations.teamSpawn2.z", 0D);
-		this.cfg.addDefault("locations.teamSpawn2.yaw", 0F);
-		this.cfg.addDefault("locations.teamSpawn2.pitch", 0F);
-		this.cfg.addDefault("locations.teamSpawn2.world", "world");
+		this.cfg.addDefault("locations.teamSpawnRed.x", 0D);
+		this.cfg.addDefault("locations.teamSpawnRed.y", 0D);
+		this.cfg.addDefault("locations.teamSpawnRed.z", 0D);
+		this.cfg.addDefault("locations.teamSpawnRed.yaw", 0F);
+		this.cfg.addDefault("locations.teamSpawnRed.pitch", 0F);
+		this.cfg.addDefault("locations.teamSpawnRed.world", "world");
 		
-		this.cfg.addDefault("locations.teamTreasure1.x", 0D);
-		this.cfg.addDefault("locations.teamTreasure1.y", 0D);
-		this.cfg.addDefault("locations.teamTreasure1.z", 0D);
-		this.cfg.addDefault("locations.teamTreasure1.yaw", 0F);
-		this.cfg.addDefault("locations.teamTreasure1.pitch", 0F);
-		this.cfg.addDefault("locations.teamTreasure1.world", "world");
+		this.cfg.addDefault("locations.teamTreasureBlue.x", 0D);
+		this.cfg.addDefault("locations.teamTreasureBlue.y", 0D);
+		this.cfg.addDefault("locations.teamTreasureBlue.z", 0D);
+		this.cfg.addDefault("locations.teamTreasureBlue.yaw", 0F);
+		this.cfg.addDefault("locations.teamTreasureBlue.pitch", 0F);
+		this.cfg.addDefault("locations.teamTreasureBlue.world", "world");
 		
-		this.cfg.addDefault("locations.teamTreasure2.x", 0D);
-		this.cfg.addDefault("locations.teamTreasure2.y", 0D);
-		this.cfg.addDefault("locations.teamTreasure2.z", 0D);
-		this.cfg.addDefault("locations.teamTreasure2.yaw", 0F);
-		this.cfg.addDefault("locations.teamTreasure2.pitch", 0F);
-		this.cfg.addDefault("locations.teamTreasure2.world", "world");
+		this.cfg.addDefault("locations.teamTreasureRed.x", 0D);
+		this.cfg.addDefault("locations.teamTreasureRed.y", 0D);
+		this.cfg.addDefault("locations.teamTreasureRed.z", 0D);
+		this.cfg.addDefault("locations.teamTreasureRed.yaw", 0F);
+		this.cfg.addDefault("locations.teamTreasureRed.pitch", 0F);
+		this.cfg.addDefault("locations.teamTreasureRed.world", "world");
 		
-		this.cfg.addDefault("locations.ship1.region", "ship1");
-		this.cfg.addDefault("locations.ship2.region", "ship2");
+		this.cfg.addDefault("locations.shipBlue.region", "shipBlue");
+		this.cfg.addDefault("locations.shipRed.region", "shipRed");
 		
 		this.cfg.addDefault("locations.world", "world");
 		
@@ -69,20 +69,20 @@ public class GameConfiguration {
 		
 		this.cfg.options().copyDefaults(true);
 		
-		this.saveConfiguration();
+		ShipsPlugin.instance().saveConfig();
 	}
 	
 	public void loadConfiguration() {
-		this.teamSpawn1 = this.loadLocation("locations.teamSpawn1");
-		this.teamSpawn2 = this.loadLocation("locations.teamSpawn2");
+		this.teamSpawnBlue = this.loadLocation("locations.teamSpawnBlue");
+		this.teamSpawnRed = this.loadLocation("locations.teamSpawnRed");
 		
-		this.teamTreasure1 = this.loadLocation("locations.teamTreasure1");
-		this.teamTreasure2 = this.loadLocation("locations.teamTreasure2");
+		this.teamTreasureBlue = this.loadLocation("locations.teamTreasureBlue");
+		this.teamTreasureRed = this.loadLocation("locations.teamTreasureRed");
 		
 		this.lobbySpawn = this.loadLocation("locations.lobby");
 		
-		this.ship1 = this.cfg.getString("locations.ship1.region");
-		this.ship2 = this.cfg.getString("locations.ship2.region");
+		this.ship1 = this.cfg.getString("locations.shipBlue.region");
+		this.ship2 = this.cfg.getString("locations.shipRed.region");
 		
 		String worldName = this.cfg.getString("locations.world");
 		
@@ -94,6 +94,12 @@ public class GameConfiguration {
 	}
 	
 	public void saveConfiguration() {
+		this.saveLocation("locations.teamSpawnBlue", this.teamSpawnBlue);
+		this.saveLocation("locations.teamSpawnRed", this.teamSpawnRed);
+		this.saveLocation("locations.teamTreasureBlue", this.teamTreasureBlue);
+		this.saveLocation("locations.teamTreasureRed", this.teamTreasureRed);
+		this.saveLocation("locations.lobby", this.lobbySpawn);
+		
 		ShipsPlugin.instance().saveConfig();
 	}
 	
@@ -127,51 +133,51 @@ public class GameConfiguration {
 		this.cfg.set(path + ".world", loc.getWorld().getName());
 	}
 	
-	public Location getTeamSpawn1() {
-		return teamSpawn1;
+	public Location getTeamSpawnBlue() {
+		return teamSpawnBlue;
 	}
 	
-	public void setTeamSpawn1(Location teamSpawn1) {
-		this.teamSpawn1 = teamSpawn1;
+	public void setTeamSpawnBlue(Location loc) {
+		this.teamSpawnBlue = loc;
 	}
 	
-	public Location getTeamSpawn2() {
-		return teamSpawn2;
+	public Location getTeamSpawnRed() {
+		return teamSpawnRed;
 	}
 	
-	public void setTeamSpawn2(Location teamSpawn2) {
-		this.teamSpawn2 = teamSpawn2;
+	public void setTeamSpawnRed(Location loc) {
+		this.teamSpawnRed = loc;
 	}
 	
-	public Location getTeamTreasure1() {
-		return teamTreasure1;
+	public Location getTeamTreasureBlue() {
+		return teamTreasureBlue;
 	}
 	
-	public void setTeamTreasure1(Location teamTreasure1) {
-		this.teamTreasure1 = teamTreasure1;
+	public void setTeamTreasureBlue(Location loc) {
+		this.teamTreasureBlue = loc;
 	}
 	
-	public Location getTeamTreasure2() {
-		return teamTreasure2;
+	public Location getTeamTreasureRed() {
+		return teamTreasureRed;
 	}
 	
-	public void setTeamTreasure2(Location teamTreasure2) {
-		this.teamTreasure2 = teamTreasure2;
+	public void setTeamTreasureRed(Location loc) {
+		this.teamTreasureRed = loc;
 	}
 	
 	public Location getLobbySpawn() {
 		return lobbySpawn;
 	}
 	
-	public void setLobbySpawn(Location lobbySpawn) {
-		this.lobbySpawn = lobbySpawn;
+	public void setLobbySpawn(Location loc) {
+		this.lobbySpawn = loc;
 	}
 	
-	public String getShipRegion1() {
+	public String getShipRegionBlue() {
 		return ship1;
 	}
 	
-	public String getShipRegion2() {
+	public String getShipRegionRed() {
 		return ship2;
 	}
 	

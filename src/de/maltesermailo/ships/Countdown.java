@@ -16,6 +16,8 @@ public class Countdown {
 			return;
 		}
 		
+		Countdown.countTime = 61;
+		
 		Countdown.task = Bukkit.getScheduler().runTaskTimer(ShipsPlugin.instance(), () -> {
 			Countdown.countTime--;
 			
@@ -24,7 +26,7 @@ public class Countdown {
 			if(Countdown.countTime <= 0) {
 				Countdown.stop();
 				
-				if(Bukkit.getOnlinePlayers().size() < 12) {
+				if(Bukkit.getOnlinePlayers().size() < 2) {
 					Bukkit.broadcastMessage(ShipsPlugin.instance().getPrefix() +
 							"§7Da zu wenige Spieler online sind, wird der Countdown neugestart.");
 					
@@ -51,6 +53,10 @@ public class Countdown {
 			
 			Countdown.task = null;
 		}
+	}
+	
+	public static void setCountTime(int countTime) {
+		Countdown.countTime = countTime;
 	}
 
 }

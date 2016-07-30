@@ -1,6 +1,9 @@
 package de.maltesermailo.ships;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.World;
+import org.bukkit.block.BlockState;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class ShipsPlugin extends JavaPlugin {
@@ -22,7 +25,7 @@ public class ShipsPlugin extends JavaPlugin {
 	
 	@Override
 	public void onEnable() {
-		Bukkit.getLogger().info("[ShipsGame] Preparing...");
+		Bukkit.getLogger().info("[Ships] Preparing...");
 		
 		this.game = new ShipsGame();
 		this.game.prepare();
@@ -30,7 +33,18 @@ public class ShipsPlugin extends JavaPlugin {
 	
 	@Override
 	public void onDisable() {
-		Bukkit.getLogger().info("[ShipsGame] Disabled.");
+		for(Location loc : this.game.getPlayerBlocks().keySet()) {
+			BlockState originalState = this.game.getPlayerBlocks().get(loc);
+			
+			//Force update block
+			originalState.update(true, true);
+		}
+		
+		for(World w : Bukkit.getWorlds()) {
+			Bukkit.unloadWorld(w, false);
+		}
+		
+		Bukkit.getLogger().info("[Ships] Disabled.");
 	}
 	
 	public String getPrefix() {

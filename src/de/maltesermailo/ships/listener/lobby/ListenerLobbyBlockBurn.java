@@ -11,8 +11,6 @@ public class ListenerLobbyBlockBurn implements Listener {
 	
 	@EventHandler
 	public void onBlockBurn(BlockBurnEvent e) {
-		if(ShipsPlugin.instance().getGame().getCurrentState() == GameState.LOBBY) {
-			e.setCancelled(true);
-		}
+		e.setCancelled(true);
 	}
 }

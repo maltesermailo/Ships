@@ -14,5 +14,12 @@ public class ListenerLobbyBlockBreak implements Listener {
 		if(ShipsPlugin.instance().getGame().getCurrentState() == GameState.LOBBY) {
 			e.setCancelled(true);
 		}
+		
+		if(ShipsPlugin.instance().getGame().getCurrentState() == GameState.PHASE_2  ||
+				ShipsPlugin.instance().getGame().getCurrentState() == GameState.PHASE_1) {
+			if(!ShipsPlugin.instance().getGame().getPlayerBlocks().containsKey(e.getBlock().getLocation())) {
+				e.setCancelled(true);
+			}
+		}
 	}
 }
