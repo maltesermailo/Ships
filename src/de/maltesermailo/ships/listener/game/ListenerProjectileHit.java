@@ -116,8 +116,8 @@ public class ListenerProjectileHit implements Listener {
 				
 				score.setScore(Math.max(0, score.getScore() - damage));
 				
-				if(score.getScore() == 0) {
-					
+				if(score.getScore() <= 0) {
+					ShipsPlugin.instance().getGame().startPhase2();
 					
 					return false;
 				}
@@ -136,7 +136,7 @@ public class ListenerProjectileHit implements Listener {
 				
 				score.setScore(Math.max(0, score.getScore() - damage));
 				
-				if(score.getScore() == 0) {
+				if(score.getScore() <= 0) {
 					ShipsPlugin.instance().getGame().startPhase2();
 					
 					return false;

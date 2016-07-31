@@ -29,6 +29,11 @@ public class ListenerPlayerMove implements Listener {
 				}
 			}
 		}
+		
+		if(e.getPlayer().getLocation().getBlock().getType() == Material.WATER ||
+				e.getPlayer().getLocation().getBlock().getType() == Material.STATIONARY_WATER) {
+			e.getPlayer().setHealth(0.0D);
+		}
 	}
 	
 }

@@ -125,8 +125,8 @@ public class ShipsGame {
 		this.scoreShipBlue = this.shipLifes.getScore("§bBlau");
 		this.scoreShipRed = this.shipLifes.getScore("§cRot");
 		
-		this.scoreShipBlue.setScore(500);
-		this.scoreShipRed.setScore(500);
+		this.scoreShipBlue.setScore(5000);
+		this.scoreShipRed.setScore(5000);
 		
 		this.gameConfiguration = new GameConfiguration();
 		this.gameConfiguration.loadConfiguration();

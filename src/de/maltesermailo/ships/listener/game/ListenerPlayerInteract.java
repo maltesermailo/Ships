@@ -7,7 +7,6 @@ import org.bukkit.entity.Fireball;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -52,40 +51,48 @@ public class ListenerPlayerInteract implements Listener {
 				}
 			}
 			
-			if(event.getClickedBlock() != null && event.getClickedBlock().getType() == Material.GOLD_BLOCK) {
-				if(event.getClickedBlock().hasMetadata("team")) {
-					if(event.getClickedBlock().getMetadata("team").get(0).asString().equalsIgnoreCase("blue")) {
-						if(ShipsPlugin.instance().getGame().getTeamBlue().hasEntry(event.getPlayer().getName())) {
-							return;
+			if(	event.getClickedBlock() != null && event.getClickedBlock().getType() == Material.GOLD_BLOCK) {
+				if(ShipsPlugin.instance().getGame().getCurrentState() == GameState.PHASE_2) {
+					if(event.getClickedBlock().hasMetadata("team")) {
+						if(event.getClickedBlock().getMetadata("team").get(0).asString().equalsIgnoreCase("blue")) {
+							if(ShipsPlugin.instance().getGame().getTeamBlue().hasEntry(event.getPlayer().getName())) {
+								return;
+							}
+							
+							event.getClickedBlock().setType(Material.AIR);
+							
+							ItemStack item = new ItemStack(Material.GOLD_BLOCK);
+							ItemMeta meta = item.getItemMeta();
+							meta.setDisplayName("§bBlauer Schatz");
+							item.setItemMeta(meta);
+							
+							event.getPlayer().getInventory().setHelmet(item);
+							
+							Bukkit.broadcastMessage(ShipsPlugin.instance().getPrefix() + " §7Der Spieler §6" + event.getPlayer().getDisplayName() + "§7 hat den blauen Schatz.");
+						} else if(event.getClickedBlock().getMetadata("team").get(0).asString().equalsIgnoreCase("red")) {
+							if(ShipsPlugin.instance().getGame().getTeamRed().hasEntry(event.getPlayer().getName())) {
+								return;
+							}
+							
+							event.getClickedBlock().setType(Material.AIR);
+							
+							ItemStack item = new ItemStack(Material.GOLD_BLOCK);
+							ItemMeta meta = item.getItemMeta();
+							meta.setDisplayName("§cRoter Schatz");
+							item.setItemMeta(meta);
+							
+							event.getPlayer().getInventory().setHelmet(item);
+							
+							Bukkit.broadcastMessage(ShipsPlugin.instance().getPrefix() + " §7Der Spieler §6" + event.getPlayer().getDisplayName() + "§7 hat den roten Schatz.");
 						}
-						
-						event.getClickedBlock().setType(Material.AIR);
-						
-						ItemStack item = new ItemStack(Material.GOLD_BLOCK);
-						ItemMeta meta = item.getItemMeta();
-						meta.setDisplayName("§bBlauer Schatz");
-						item.setItemMeta(meta);
-						
-						event.getPlayer().getInventory().setHelmet(item);
-					} else if(event.getClickedBlock().getMetadata("team").get(0).asString().equalsIgnoreCase("red")) {
-						if(ShipsPlugin.instance().getGame().getTeamRed().hasEntry(event.getPlayer().getName())) {
-							return;
-						}
-						
-						event.getClickedBlock().setType(Material.AIR);
-						
-						ItemStack item = new ItemStack(Material.GOLD_BLOCK);
-						ItemMeta meta = item.getItemMeta();
-						meta.setDisplayName("§cRoter Schatz");
-						item.setItemMeta(meta);
-						
-						event.getPlayer().getInventory().setHelmet(item);
 					}
+				} else {
+					event.getPlayer().sendMessage(ShipsPlugin.instance().getPrefix() + "§7 Du kannst in Phase 1 keine Goldblöcke aufheben.");
 				}
 			} else if(event.getClickedBlock() != null && event.getClickedBlock().getType() == Material.CHEST) {
 				event.setCancelled(true);
 				
-				if(!ShipsPlugin.instance().getGame().getChests().containsKey(event.getClickedBlock())) {
+				if(!ShipsPlugin.instance().getGame().getChests().containsKey(event.getClickedBlock().getLocation())) {
 					Chest c = (Chest) event.getClickedBlock().getState();
 					
 					Inventory newInv = Bukkit.createInventory(null, c.getInventory().getSize());
