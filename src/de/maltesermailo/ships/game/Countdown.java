@@ -1,9 +1,11 @@
-package de.maltesermailo.ships;
+package de.maltesermailo.ships.game;
 
 import java.util.concurrent.Callable;
 
 import org.bukkit.Bukkit;
 import org.bukkit.scheduler.BukkitTask;
+
+import de.maltesermailo.ships.ShipsPlugin;
 
 public class Countdown {
 	

@@ -1,4 +1,4 @@
-package de.maltesermailo.ships;
+package de.maltesermailo.ships.game;
 
 import java.util.HashMap;
 
@@ -8,6 +8,7 @@ import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -26,6 +27,7 @@ import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 import com.sk89q.worldguard.protection.managers.RegionManager;
 import com.sk89q.worldguard.protection.regions.ProtectedRegion;
 
+import de.maltesermailo.ships.ShipsPlugin;
 import de.maltesermailo.ships.commands.MainCmd;
 import de.maltesermailo.ships.commands.StartCmd;
 import de.maltesermailo.ships.listener.ListenerArmorStandManipulate;
@@ -160,6 +162,7 @@ public class ShipsGame {
 		bowExplosionMeta.setLore(Lists.newArrayList("Die Pfeile dieses Bogens sind", " mit Schwarzpulver bestückt", "§7+§215 Schaden"));
 		
 		this.bowExplosion.setItemMeta(bowExplosionMeta);
+		this.bowExplosion.addEnchantment(Enchantment.ARROW_INFINITE, 1);
 		
 		this.bowFire = new ItemStack(Material.BOW);
 		
@@ -168,6 +171,7 @@ public class ShipsGame {
 		bowFireMeta.setLore(Lists.newArrayList("Dieser Bogen ist heiß", "und seine Pfeile auch!", "§7+§210 Schaden"));
 		
 		this.bowFire.setItemMeta(bowFireMeta);
+		this.bowFire.addEnchantment(Enchantment.ARROW_INFINITE, 1);
 		
 		Bukkit.getScheduler().runTaskTimer(ShipsPlugin.instance(), () -> {
 			for (CooldownManager manager : this.cooldowns.values()) {

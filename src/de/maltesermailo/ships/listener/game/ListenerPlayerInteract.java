@@ -15,8 +15,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.scoreboard.Score;
 
-import de.maltesermailo.ships.GameState;
 import de.maltesermailo.ships.ShipsPlugin;
+import de.maltesermailo.ships.game.GameState;
 
 public class ListenerPlayerInteract implements Listener {
 	

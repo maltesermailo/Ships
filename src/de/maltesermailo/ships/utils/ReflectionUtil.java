@@ -1,4 +1,4 @@
-package de.maltesermailo.ships;
+package de.maltesermailo.ships.utils;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;

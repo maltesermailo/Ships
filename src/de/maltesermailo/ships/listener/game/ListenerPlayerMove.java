@@ -5,8 +5,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
 
-import de.maltesermailo.ships.ShipsGame;
 import de.maltesermailo.ships.ShipsPlugin;
+import de.maltesermailo.ships.game.ShipsGame;
 
 public class ListenerPlayerMove implements Listener {
 

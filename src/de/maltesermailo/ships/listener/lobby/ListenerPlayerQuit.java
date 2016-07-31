@@ -1,16 +1,14 @@
 package de.maltesermailo.ships.listener.lobby;
 
-import java.util.concurrent.Callable;
-
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-import de.maltesermailo.ships.Countdown;
-import de.maltesermailo.ships.GameState;
 import de.maltesermailo.ships.ShipsPlugin;
+import de.maltesermailo.ships.game.Countdown;
+import de.maltesermailo.ships.game.GameState;
 
 public class ListenerPlayerQuit implements Listener {
 	

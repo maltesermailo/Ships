@@ -1,4 +1,4 @@
-package de.maltesermailo.ships;
+package de.maltesermailo.ships.game;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -6,6 +6,8 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.bukkit.entity.Player;
+
+import de.maltesermailo.ships.utils.ReflectionUtil;
 
 public class CooldownManager {
 	

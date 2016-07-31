@@ -4,8 +4,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 
-import de.maltesermailo.ships.GameState;
 import de.maltesermailo.ships.ShipsPlugin;
+import de.maltesermailo.ships.game.GameState;
 
 public class ListenerLobbyBlockBreak implements Listener {
 	

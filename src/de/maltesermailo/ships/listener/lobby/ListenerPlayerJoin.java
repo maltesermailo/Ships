@@ -8,10 +8,10 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
-import de.maltesermailo.ships.CooldownManager;
-import de.maltesermailo.ships.Countdown;
-import de.maltesermailo.ships.GameState;
 import de.maltesermailo.ships.ShipsPlugin;
+import de.maltesermailo.ships.game.CooldownManager;
+import de.maltesermailo.ships.game.Countdown;
+import de.maltesermailo.ships.game.GameState;
 
 public class ListenerPlayerJoin implements Listener {
 	

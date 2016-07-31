@@ -5,7 +5,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import de.maltesermailo.ships.Countdown;
+import de.maltesermailo.ships.game.Countdown;
 
 public class StartCmd implements CommandExecutor {
 

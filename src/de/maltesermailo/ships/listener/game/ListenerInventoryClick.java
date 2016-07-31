@@ -6,7 +6,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.Event.Result;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCreativeEvent;
-import org.bukkit.event.inventory.InventoryInteractEvent;
 import org.bukkit.event.inventory.InventoryMoveItemEvent;
 
 public class ListenerInventoryClick implements Listener {
@@ -15,6 +14,7 @@ public class ListenerInventoryClick implements Listener {
 	public void onClick(InventoryClickEvent e) {
 		if(e.getCurrentItem() != null && e.getCurrentItem().getType() == Material.GOLD_BLOCK) {
 			e.setResult(Result.DENY);
+			e.setCancelled(true);
 		}
 	}
 	
@@ -28,6 +28,7 @@ public class ListenerInventoryClick implements Listener {
 	@EventHandler
 	public void on(InventoryCreativeEvent e) {
 		if(e.getCurrentItem() != null && e.getCurrentItem().getType() == Material.GOLD_BLOCK) {
+			e.setResult(Result.DENY);
 			e.setCancelled(true);
 		}
 	}

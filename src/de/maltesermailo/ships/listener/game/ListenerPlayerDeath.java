@@ -9,8 +9,8 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.metadata.FixedMetadataValue;
 
-import de.maltesermailo.ships.GameState;
 import de.maltesermailo.ships.ShipsPlugin;
+import de.maltesermailo.ships.game.GameState;
 
 public class ListenerPlayerDeath implements Listener {
 	

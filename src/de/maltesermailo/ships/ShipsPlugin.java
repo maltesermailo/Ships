@@ -6,6 +6,8 @@ import org.bukkit.World;
 import org.bukkit.block.BlockState;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import de.maltesermailo.ships.game.ShipsGame;
+
 public class ShipsPlugin extends JavaPlugin {
 	
 	private static ShipsPlugin instance;

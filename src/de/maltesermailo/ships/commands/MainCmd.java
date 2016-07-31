@@ -5,8 +5,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import de.maltesermailo.ships.ShipsGame;
 import de.maltesermailo.ships.ShipsPlugin;
+import de.maltesermailo.ships.game.ShipsGame;
 
 public class MainCmd implements CommandExecutor {
 

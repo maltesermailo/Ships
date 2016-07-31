@@ -1,4 +1,4 @@
-package de.maltesermailo.ships;
+package de.maltesermailo.ships.game;
 
 public enum GameState {
 	
